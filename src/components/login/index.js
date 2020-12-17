@@ -13,7 +13,7 @@ import {
   // Label,
   Input,
 } from 'reactstrap';
-import './style.css';
+import './style2.css';
 import { setCookie } from '../../utils/cookie';
 import { authService } from '../../services';
 // import { RegisterModal } from '../index';
