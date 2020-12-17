@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import {
   Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Form,
   FormGroup,
-  Label,
+  // Label,
   Input,
+  Card,
+  CardBody,
+  CardTitle,
 } from 'reactstrap';
-import { setCookie } from '../../utils/cookie';
+import './style.css';
+// import { setCookie } from '../../utils/cookie';
 import { authService } from '../../services';
 
-const RegisterModal = (props) => {
-  const { className } = props;
-
-  const [modal, setModal] = useState(false);
-  const [username, setUsername] = useState('');
+const RegisterModal = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [birthdate, setBirthdate] = useState('');
+  const [sex, setSex] = useState('');
+  const [phone, setPhone] = useState('');
+  const [status, setStatus] = useState('');
   const [password, setPassword] = useState('');
   const [isLoginLoading, setLoginLoading] = useState(false);
 
@@ -25,85 +27,186 @@ const RegisterModal = (props) => {
     document.title = 'Register  Aplikasi-SiOce';
   });
 
-  const toggle = () => {
-    return setModal(!modal);
+  const cancle = () => {
+    return window.location.replace('/login');
   };
 
   const onSubmit = () => {
     setLoginLoading(true);
     authService
-      .login(username, password)
-      .then((res) => {
-        // console.log(JSON.stringify(res.token));
-        // console.log(JSON.parse(res.token));
-        const cookieToken = res.token;
-        // const cookieUser = res.user;
-        // setCookie('userID', JSON.stringify(cookieUser), 1000);
-        setCookie('tokenn', JSON.stringify(cookieToken), 1);
-      })
+      .login(name, email, birthdate, sex, phone, status, password)
+      // .then((res) => {
+      // console.log(JSON.stringify(res.token));
+      // console.log(JSON.parse(res.token));
+      // const cookieToken = res.token;
+      // console.log(res)
+      // const cookieUser = res.user;
+      // setCookie('userID', JSON.stringify(cookieUser), 1000);
+      // setCookie('tokenn', JSON.stringify(cookieToken), 1);
+      // })
       //   .catch((err) => {
       //     console.log(err);
       //   })
       .finally(() => {
         setLoginLoading(false);
-        toggle();
         // history.push('/product');
-        window.location.replace('/product');
+        window.location.replace('/login');
       });
   };
 
   return (
     <div>
-      <Button color="primary" onClick={toggle}>
-        Here
-      </Button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Login</ModalHeader>
-        <ModalBody>
+      <Card className="card">
+        <CardBody>
+          <CardTitle>Login</CardTitle>
           <Form>
             <FormGroup>
-              <Label for="username">Username</Label>
-              <Input
-                type="text"
-                name="username"
-                id="username"
-                placeholder="Username"
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                }}
-              />
+              <div className="row">
+                <div className="col-md-3">
+                  <h1 className="title">Name</h1>
+                </div>
+                <div className="col-md-9">
+                  <Input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="name"
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
             </FormGroup>
             <FormGroup>
-              <Label for="password">Password</Label>
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
+              <div className="row">
+                <div className="col-md-3">
+                  <h1 className="title">Email</h1>
+                </div>
+                <div className="col-md-9">
+                  <Input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="email"
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
             </FormGroup>
-            {/* <Button>Submit</Button> */}
+            <FormGroup>
+              <div className="row">
+                <div className="col-md-3">
+                  <h1 className="title">Birthdate</h1>
+                </div>
+                <div className="col-md-9">
+                  <Input
+                    type="text"
+                    name="birthdate"
+                    id="birthdate"
+                    placeholder="birthdate"
+                    onChange={(e) => {
+                      setBirthdate(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+            </FormGroup>
+            <FormGroup>
+              <div className="row">
+                <div className="col-md-3">
+                  <h1 className="title">Sex</h1>
+                </div>
+                <div className="col-md-9">
+                  <Input
+                    type="text"
+                    name="sex"
+                    id="sex"
+                    placeholder="sex"
+                    onChange={(e) => {
+                      setSex(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+            </FormGroup>
+            <FormGroup>
+              <div className="row">
+                <div className="col-md-3">
+                  <h1 className="title">Phone</h1>
+                </div>
+                <div className="col-md-9">
+                  <Input
+                    type="text"
+                    name="phone"
+                    id="phone"
+                    placeholder="Phone Number"
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+            </FormGroup>
+            <FormGroup>
+              <div className="row">
+                <div className="col-md-3">
+                  <h1 className="title">Status</h1>
+                </div>
+                <div className="col-md-9">
+                  <Input
+                    type="text"
+                    name="status"
+                    id="status"
+                    placeholder="status"
+                    onChange={(e) => {
+                      setStatus(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+            </FormGroup>
+            <div className="row">
+              <div className="col-md-3">
+                <h1 className="title">Password</h1>
+              </div>
+              <div className="col-md-9">
+                <Input
+                  type="text"
+                  name="password"
+                  id="password"
+                  placeholder="password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="button">
+              <Button
+                className="button-cancel"
+                color="danger"
+                onClick={cancle}
+                disabled={isLoginLoading}
+              >
+                Cancel
+              </Button>
+              <Button
+                color="primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSubmit();
+                }}
+                disabled={isLoginLoading}
+              >
+                Login
+              </Button>
+            </div>
           </Form>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="danger" onClick={toggle} disabled={isLoginLoading}>
-            Cancel
-          </Button>
-          <Button
-            color="primary"
-            onClick={(e) => {
-              e.preventDefault();
-              onSubmit();
-            }}
-            disabled={isLoginLoading}
-          >
-            Login
-          </Button>
-        </ModalFooter>
-      </Modal>
+        </CardBody>
+      </Card>
     </div>
   );
 };
