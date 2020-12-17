@@ -1,15 +1,17 @@
 import React from 'react';
-import { Button, Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
+import ModalCreateClass from '../modal-createclass';
+import './style.css';
 
 const NavbarClass = () => {
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/classroom">My Class</Navbar.Brand>
+      <Navbar className="color-nav" variant="dark">
+        <Navbar.Brand className="text-dark" href="/classroom">
+          Kelas Saya
+        </Navbar.Brand>
         <Nav className="ml-auto">
-          <Button variant="primary" href="/createclass">
-            Buat Kelas
-          </Button>
+          <ModalCreateClass />
         </Nav>
       </Navbar>
     </div>

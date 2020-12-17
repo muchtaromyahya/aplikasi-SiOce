@@ -1,26 +1,34 @@
-// import { Home } from '../pages';
-
-import { ListClass, CreateClass, ClassRoom } from '../pages';
+import { Home, Classes, Comments, Posts, Tasks } from '../pages';
 
 const routes = [
-  // {
-  //   path: '/',
-  //   component: Home,
-  //   isPublic: true,
-  // },
   {
-    path: '/listclass',
-    component: ListClass,
+    path: '/tasks',
+    component: Tasks,
     isPublic: true,
   },
   {
-    path: '/classroom',
-    component: ClassRoom,
+    path: '/post',
+    component: Posts,
     isPublic: true,
   },
   {
-    path: '/createclass',
-    component: CreateClass,
+    path: '/comments',
+    component: Comments,
+    isPublic: true,
+  },
+  {
+    path: '/classes',
+    component: Classes,
+    isPublic: true,
+  },
+  {
+    path: '/home',
+    component: Home,
+    isPublic: true,
+  },
+  {
+    path: '/',
+    component: Home,
     isPublic: true,
   },
 ];

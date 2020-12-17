@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
-const ModalCreateClass = (props) => {
+const ModalEditClass = (props) => {
   const [namaKelas, setNamaKelas] = useState('');
   const [deskripsi, setDeskripsi] = useState('');
   const { buttonLabel, className } = props;
@@ -38,11 +38,11 @@ const ModalCreateClass = (props) => {
   return (
     <div>
       <Button variant="primary" onClick={toggle}>
-        Tambah Kelas
+        Edit Kelas
         {buttonLabel}
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Tambahkan Kelas</ModalHeader>
+        <ModalHeader toggle={toggle}>Edit Kelas</ModalHeader>
         <ModalBody>
           <div className="container">
             <Form>
@@ -51,7 +51,7 @@ const ModalCreateClass = (props) => {
                 <Form.Control
                   value={namaKelas}
                   type="email"
-                  placeholder="Masukan nama kelas"
+                  placeholder="Ganti nama kelas"
                   onChange={(e) => {
                     setNamaKelas(e.target.value);
                   }}
@@ -64,7 +64,7 @@ const ModalCreateClass = (props) => {
                   value={deskripsi}
                   as="textarea"
                   rows={3}
-                  placeholder="Masukan deskripsi kelas"
+                  placeholder="Ganti deskripsi kelas"
                   onChange={(e) => {
                     setDeskripsi(e.target.value);
                   }}
@@ -76,7 +76,7 @@ const ModalCreateClass = (props) => {
                 onClick={onSubmit}
                 // disabled={isLoginLoading}
               >
-                Buat Kelas
+                Simpan Perubahan
               </Button>
             </Form>
           </div>
@@ -94,4 +94,4 @@ const ModalCreateClass = (props) => {
   );
 };
 
-export default ModalCreateClass;
+export default ModalEditClass;
