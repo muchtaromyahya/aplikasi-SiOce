@@ -1,0 +1,8 @@
+.container-card {
+  display: flex;
+}
+
+.modal-edit {
+  display: flex;
+  justify-content: space-between;
+}
