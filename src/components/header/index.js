@@ -7,7 +7,7 @@ import './style.css';
 const Header = () => {
   const listMenu = ['Home', 'Classes'];
   const logout = () => {
-    deleteCookie('tokenn');
+    deleteCookie('token');
     window.location.replace('/login');
   };
 

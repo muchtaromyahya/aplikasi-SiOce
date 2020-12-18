@@ -1,32 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import {
   Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
+  // Modal,
+  // ModalHeader,
+  // ModalBody,
+  // ModalFooter,
+  Card,
+  CardBody,
+  CardTitle,
   Form,
   FormGroup,
-  Label,
+  // Label,
   Input,
 } from 'reactstrap';
+import './style.css';
 import { setCookie } from '../../utils/cookie';
 import { authService } from '../../services';
+// import { RegisterModal } from '../index';
 
-const Login = (props) => {
-  const { className } = props;
+const Login = () => {
+  // const { className } = props;
 
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoginLoading, setLoginLoading] = useState(false);
 
   useEffect(() => {
-    document.title = 'DTI Task - Login';
+    document.title = 'Login  Aplikasi-SiOce';
   });
 
-  const toggle = () => {
-    return setModal(!modal);
+  // const toggle = () => {
+  //   return setModal(!modal);
+  // };
+  const cancle = () => {
+    return window.location.replace('/home');
+  };
+
+  const register = () => {
+    return window.location.replace('/register');
   };
 
   const onSubmit = () => {
@@ -36,28 +48,85 @@ const Login = (props) => {
       .then((res) => {
         // console.log(JSON.stringify(res.token));
         // console.log(JSON.parse(res.token));
-        const cookieToken = res.token;
+        const cookieToken = res.data.token;
         // const cookieUser = res.user;
         // setCookie('userID', JSON.stringify(cookieUser), 1000);
-        setCookie('tokenn', JSON.stringify(cookieToken), 1);
+        setCookie('token', JSON.stringify(cookieToken), 1000);
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         setLoginLoading(false);
-        toggle();
+        // toggle();
         // history.push('/product');
-        window.location.replace('/product');
+        window.location.replace('/classes');
       });
   };
 
   return (
-    <div>
-      <Button color="primary" onClick={toggle}>
+    <div className="login">
+      {/* <Button color="primary" onClick={toggle}>
         Here
-      </Button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
+      </Button> */}
+      <Card className="card">
+        <CardBody>
+          <CardTitle>Login</CardTitle>
+          <Form>
+            <FormGroup>
+              {/* <Label for="username">Username</Label> */}
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+              />
+            </FormGroup>
+            <FormGroup>
+              {/* <Label for="password">Password</Label> */}
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </FormGroup>
+            {/* <Button>Submit</Button> */}
+            <div className="button">
+              <Button
+                className="button-cancel"
+                color="danger"
+                onClick={cancle}
+                disabled={isLoginLoading}
+              >
+                Cancel
+              </Button>
+              <Button
+                color="primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSubmit();
+                }}
+                disabled={isLoginLoading}
+              >
+                Login
+              </Button>
+            </div>
+            <span className="register">
+              <Button className="btn-outline-secondary" onClick={register}>
+                Register
+              </Button>
+            </span>
+          </Form>
+        </CardBody>
+      </Card>
+      {/* <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Login</ModalHeader>
         <ModalBody>
           <Form>
@@ -85,7 +154,6 @@ const Login = (props) => {
                 }}
               />
             </FormGroup>
-            {/* <Button>Submit</Button> */}
           </Form>
         </ModalBody>
         <ModalFooter>
@@ -103,7 +171,7 @@ const Login = (props) => {
             Login
           </Button>
         </ModalFooter>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
