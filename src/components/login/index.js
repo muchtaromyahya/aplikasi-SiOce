@@ -21,7 +21,7 @@ import { authService } from '../../services';
 const Login = () => {
   // const { className } = props;
 
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoginLoading, setLoginLoading] = useState(false);
@@ -30,9 +30,9 @@ const Login = () => {
     document.title = 'Login  Aplikasi-SiOce';
   });
 
-  const toggle = () => {
-    return setModal(!modal);
-  };
+  // const toggle = () => {
+  //   return setModal(!modal);
+  // };
   const cancle = () => {
     return window.location.replace('/home');
   };
@@ -53,12 +53,12 @@ const Login = () => {
         // setCookie('userID', JSON.stringify(cookieUser), 1000);
         setCookie('token', JSON.stringify(cookieToken), 1000);
       })
-      // .catch((err) => {
-      //   console.log(err);
-      // })
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setLoginLoading(false);
-        toggle();
+        // toggle();
         // history.push('/product');
         window.location.replace('/classes');
       });
