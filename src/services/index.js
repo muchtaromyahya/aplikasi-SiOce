@@ -6,3 +6,4 @@ export { default as createPostService } from './createPost';
 export { default as postService } from './post';
 export { default as updateClassService } from './updateClass';
 export { default as appService } from './appService';
+export { default as commentsService } from './commentsService';

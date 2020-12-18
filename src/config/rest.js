@@ -1,4 +1,8 @@
 export default {
-  LOGIN: '/user/login',
+  LOGIN: '/login',
+  REGISTER: '/user/register',
   CLASS: '/class',
+  COMMENT: '/comment',
+  ASSIGNMENT: '/assignments',
+  UPLOAD: 'uploads',
 };

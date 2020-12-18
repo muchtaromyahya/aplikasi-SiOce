@@ -1,0 +1,65 @@
+.head {
+  text-decoration: none;
+  color: black;
+}
+.iconTask {
+  height: 40px;
+}
+.taskIcon{
+  height: 80px;
+}
+.fileShare {
+
+}
+.fileClass{
+    width: 300px;
+    height: 80px;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+.inputFile {
+  font-weight: bold;
+  color: #c0392b;
+  height: 50px;
+  width: 200px;
+  background-color: white;
+  border: 2px solid #c0392b;
+  border-radius: 10px;
+  position: absolute;
+}
+.iconColor {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
+    brightness(104%) contrast(97%);
+}
+.wrap {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.wrapFile{
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: auto;
+  max-width: 350px;
+  min-width: 350px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.boldText{
+  font-weight: bold;
+}
+
+.asd {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 300px;
+}
+.accepted{
+    color: green;
+    font-weight: bold;
+}
+.expired{
+    color: red;
+    font-weight: bold;
+}

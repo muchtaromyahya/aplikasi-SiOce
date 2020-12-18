@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ClassList, NavbarClass } from '../../components';
+import { ClassList, NavbarClass, Tugas } from '../../components';
 import { classService } from '../../services';
+
 import './styleclasses.css';
 
 const Classes = () => {
@@ -23,20 +24,31 @@ const Classes = () => {
       });
   }, []);
   return (
-    <div className="classbody">
-      <NavbarClass />
-      {/* <ClassList2 />
-      <ClassList2 /> */}
-
-      <div className="cards">
-        {classname.map((classnames) => {
-          return (
-            <ClassList
-              title={classnames.classname}
-              desciption={classnames.description}
-            />
-          );
-        })}
+    <div>
+      <div className="classbody">
+        <NavbarClass />
+        <div className="cards">
+          {classname.map((classnames) => {
+            return (
+              <ClassList
+                title={classnames.classname}
+                desciption={classnames.description}
+              />
+            );
+          })}
+        </div>
+      </div>
+      <div className="mt-5">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col md-8 text-center">
+              <h1>Postingan</h1>
+            </div>
+            <div className="col md-4">
+              <Tugas />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
