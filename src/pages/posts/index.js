@@ -1,57 +1,83 @@
-import React, { useState } from 'react';
-import { Button, Container, Form, Jumbotron } from 'react-bootstrap';
-// import { Post } from '../../components';
+import React, { useEffect, useState } from 'react';
+import { Button, Container, Form, Jumbotron, Nav } from 'react-bootstrap';
+import { Post } from '../../components';
+import { createPostService, postService } from '../../services';
 import './style_post.css';
 
 const Posts = () => {
-  const [judulPost, setJudulPost] = useState('');
-  const [deskripsi, setDeskripsi] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [
+    classId,
+    // setClassId
+  ] = useState('');
+  const [
+    // post,
+    setPost,
+  ] = useState('');
+  // const [post, setPost] = useState([]);
 
-  // useEffect(() => {
-  //   setUserDataLoading(true);
-  //   productService
-  //     .Product(50, 0, '')
-  //     .then((res) => {
-  //       setProduct(res.data);
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       return console.log(err);
-  //     })
-  //     .finally(() => {
-  //       setUserDataLoading(false);
-  //     });
-  // }, []);
+  useEffect(() => {
+    //   setUserDataLoading(true);
+    postService
+      .post()
+      .then((res) => {
+        setPost(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        return console.log(err);
+      })
+      .finally(() => {
+        // setUserDataLoading(false);
+      });
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // console.log(judulPost);
-    // console.log(deskripsi);
+    // console.log(title);
+    // console.log(description);
     // setLoginLoading(true);
-    // authService
-    //   .login(username, password)
-    //   .then((res) => {
-    //     console.log(res);
-    //     const cookieToken = res.token;
-    //     const cookieUser = res.userId;
-    //     setCookie('userId', JSON.stringify(cookieUser), 10000);
-    //     setCookie('token', JSON.stringify(cookieToken), 10000);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
-    //   .finally(() => {
-    //     setLoginLoading(false);
-    //   });
+    createPostService
+      .createpost(classId, title, description)
+      .then((res) => {
+        console.log(res);
+        //     const cookieToken = res.token;
+        //     const cookieUser = res.userId;
+        //     setCookie('userId', JSON.stringify(cookieUser), 10000);
+        //     setCookie('token', JSON.stringify(cookieToken), 10000);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        // setLoginLoading(false);
+      });
   };
 
   const onCancel = () => {
-    setJudulPost('');
-    setDeskripsi('');
+    setTitle('');
+    setDescription('');
   };
   return (
     <div className="post">
-      <Jumbotron fluid>
+      <Nav fill variant="tabs" defaultActiveKey="/post">
+        <Nav.Item>
+          <Nav.Link href="/post">
+            <h3>Post</h3>
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1">
+            <h3>Task</h3>
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+      {/* <div className="row">
+        <div className="col-md-6">panggil post</div>
+        <div className="col-md-6">panggil task</div>
+      </div> */}
+      <Jumbotron className="mt-4" fluid>
         <Container>
           <h1>Nama Kelas</h1>
           <p>
@@ -64,23 +90,23 @@ const Posts = () => {
         <Form>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Control
-              value={judulPost}
+              value={title}
               type="email"
               placeholder="Masukan judul Post"
               onChange={(e) => {
                 // console.log(e.target.value);
-                setJudulPost(e.target.value);
+                setTitle(e.target.value);
               }}
             />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Control
-              value={deskripsi}
+              value={description}
               as="textarea"
               rows={3}
               placeholder="Deskripsi"
               onChange={(e) => {
-                setDeskripsi(e.target.value);
+                setDescription(e.target.value);
               }}
             />
           </Form.Group>
@@ -92,9 +118,14 @@ const Posts = () => {
           </Button>
         </Form>
       </div>
-      {/* <Post />
-      <Post />
-      <Post /> */}
+      <div>
+        {/* {post.map((posts) => {
+          return <Post title={posts.title} desciption={posts.desciption} />;
+        })} */}
+        <Post />
+      </div>
+
+      <div className="post-card">aseateryrewyewgdfgasfhdg</div>
     </div>
   );
   //   const dataPosting = list.map((data) => {
