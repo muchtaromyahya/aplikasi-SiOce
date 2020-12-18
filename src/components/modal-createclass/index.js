@@ -4,8 +4,10 @@ import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { createClassService } from '../../services';
 
 const ModalCreateClass = (props) => {
-  const [namaKelas, setNamaKelas] = useState('');
-  const [deskripsi, setDeskripsi] = useState('');
+  const [classname, setClassname] = useState('');
+  const [description, setDescription] = useState('');
+  // const [maxstudent, setMaxstudent] = useState(30);
+  // const [isLoading, setLoading] = useState(false);
   const { buttonLabel, className } = props;
 
   const [modal, setModal] = useState(false);
@@ -16,23 +18,24 @@ const ModalCreateClass = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(namaKelas);
-    console.log(deskripsi);
+    console.log(classname);
+    console.log(description);
     // setLoginLoading(true);
-    createClassService.createclass();
-    //   .then((res) => {
-    //     console.log(res);
-    //     const cookieToken = res.token;
-    //     const cookieUser = res.userId;
-    //     setCookie('userId', JSON.stringify(cookieUser), 10000);
-    //     setCookie('token', JSON.stringify(cookieToken), 10000);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
-    //   .finally(() => {
-    //     setLoginLoading(false);
-    //   });
+    createClassService
+      .createclass(classname, description, 30)
+      .then((res) => {
+        console.log(res);
+        //     const cookieToken = res.token;
+        //     const cookieUser = res.userId;
+        //     setCookie('userId', JSON.stringify(cookieUser), 10000);
+        //     setCookie('token', JSON.stringify(cookieToken), 10000);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        // setLoading(false);
+      });
   };
 
   return (
@@ -49,11 +52,11 @@ const ModalCreateClass = (props) => {
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Nama Kelas</Form.Label>
                 <Form.Control
-                  value={namaKelas}
+                  value={classname}
                   type="email"
                   placeholder="Masukan nama kelas"
                   onChange={(e) => {
-                    setNamaKelas(e.target.value);
+                    setClassname(e.target.value);
                   }}
                 />
               </Form.Group>
@@ -61,12 +64,12 @@ const ModalCreateClass = (props) => {
               <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Deskripsi</Form.Label>
                 <Form.Control
-                  value={deskripsi}
+                  value={description}
                   as="textarea"
                   rows={3}
-                  placeholder="Masukan deskripsi kelas"
+                  placeholder="Masukan description kelas"
                   onChange={(e) => {
-                    setDeskripsi(e.target.value);
+                    setDescription(e.target.value);
                   }}
                 />
               </Form.Group>
@@ -74,6 +77,7 @@ const ModalCreateClass = (props) => {
                 variant="primary"
                 type="submit"
                 onClick={onSubmit}
+                href="classes"
                 // disabled={isLoginLoading}
               >
                 Buat Kelas

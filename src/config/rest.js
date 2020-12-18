@@ -1,3 +1,4 @@
 export default {
-  LOGIN: '/login',
+  LOGIN: '/user/login',
+  CLASS: '/class',
 };
