@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import './style.css';
+import { Link } from 'react-router-dom';
 import { Card, Button, Accordion, Form, FormGroup } from 'react-bootstrap';
-import { Label, Input } from 'reactstrap';
-import { taskIcon, addIcon } from '../../assets';
+import { Input } from 'reactstrap';
+import { taskIcon } from '../../assets';
 
 const Tugas = () => {
   return (
@@ -35,8 +37,8 @@ const Tugas = () => {
                     </div>
                     {/* <div className="col-3">
                       <h6 className="head mt-2 accepted">Dikumpulkan</h6>
-                    </div>
-                    <div className="col-3">
+                    </div> */}
+                    {/* <div className="col-3">
                       <h6 className="head mt-2 expired">Terlambat</h6>
                     </div> */}
                   </div>
@@ -69,39 +71,48 @@ const Tugas = () => {
                     </div>
                   </div>
 
-                  <div className="row mx-auto">
-                    <div className="wrapFile p-3">
-                      <div className="col">
-                        <img src={taskIcon} alt="img" className="iconTask" />
-                      </div>
-                      <div className="col">Tugas1_1301147245.docs</div>
+                  <div className="row ml-1 ">
+                    <div className="wrapFile">
+                      <Link to="_blank" key="_blank">
+                        <div className="row">
+                          <div className="col-2 my-auto">
+                            <img
+                              src={taskIcon}
+                              alt="img"
+                              className="taskIcon"
+                            />
+                          </div>
+                          <div className="col dataText text-center my-auto">
+                            <p>Tugas1_1301147245.docs</p>
+                          </div>
+                        </div>
+                      </Link>
                     </div>
                   </div>
 
                   <div className="row mt-2 border-top">
-                    <div className="col">
+                    <div className="col mt-4 mx-auto">
                       <Form>
                         <FormGroup>
-                          <Input
-                            type="file"
-                            name="username"
-                            id="InputFile"
-                            // onChange={(e) => {
-                            //   setUsername(e.target.value);
-                            // }}
-                          />
-                          <Label className="inputFile">
-                            <div className="wrap mx-auto">
-                              <img
-                                className="iconColor"
-                                src={addIcon}
-                                alt="icons"
+                          <div className="input-group mb-3">
+                            <div className="custom-file">
+                              <Input
+                                type="file"
+                                class="custom-file-input"
+                                id="inputGroupFile01"
+                                // onChange={(e) => {
+                                //   setUsername(e.target.value);
+                                // }}
                               />
-                              Tambah File
+                              <label
+                                className="custom-file-label"
+                                htmlFor="inputGroupFile01"
+                              >
+                                Choose file
+                              </label>
                             </div>
-                          </Label>
+                          </div>
                         </FormGroup>
-                        {/* <Button>Submit</Button> */}
                       </Form>
                     </div>
                   </div>
