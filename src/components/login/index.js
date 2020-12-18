@@ -48,10 +48,10 @@ const Login = () => {
       .then((res) => {
         // console.log(JSON.stringify(res.token));
         // console.log(JSON.parse(res.token));
-        const cookieToken = res.token;
+        const cookieToken = res.data.token;
         // const cookieUser = res.user;
         // setCookie('userID', JSON.stringify(cookieUser), 1000);
-        setCookie('tokenn', JSON.stringify(cookieToken), 1);
+        setCookie('token', JSON.stringify(cookieToken), 1000);
       })
       // .catch((err) => {
       //   console.log(err);
