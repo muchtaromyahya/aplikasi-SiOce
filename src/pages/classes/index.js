@@ -1,35 +1,19 @@
 import React from 'react';
-import { ClassList, NavbarClass } from '../../components';
+import { Tugas } from '../../components';
 import './style.css';
 
 const Classes = () => {
-  // const [userDataLoading, setUserDataLoading] = useState(false);
-  // const [product, setProduct] = useState([]);
-
-  // useEffect(() => {
-  //   setUserDataLoading(true);
-  //   productService
-  //     .Product(50, 0, '')
-  //     .then((res) => {
-  //       setProduct(res.data);
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       return console.log(err);
-  //     })
-  //     .finally(() => {
-  //       setUserDataLoading(false);
-  //     });
-  // }, []);
   return (
-    <div className="classbody">
-      <NavbarClass />
-      <div className="cards">
-        <ClassList />
-        <ClassList />
-        <ClassList />
-        <ClassList />
-        <ClassList />
+    <div className="mt-5">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col md-8 text-center">
+            <h1>Postingan</h1>
+          </div>
+          <div className="col md-4">
+            <Tugas />
+          </div>
+        </div>
       </div>
     </div>
   );
