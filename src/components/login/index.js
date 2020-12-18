@@ -60,7 +60,7 @@ const Login = () => {
         setLoginLoading(false);
         toggle();
         // history.push('/product');
-        window.location.replace('/product');
+        window.location.replace('/classes');
       });
   };
 
@@ -76,10 +76,10 @@ const Login = () => {
             <FormGroup>
               {/* <Label for="username">Username</Label> */}
               <Input
-                type="text"
-                name="username"
-                id="username"
-                placeholder="Username"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
                 onChange={(e) => {
                   setUsername(e.target.value);
                 }}
@@ -118,7 +118,7 @@ const Login = () => {
                 Login
               </Button>
             </div>
-            <span>
+            <span className="register">
               <Button className="btn-outline-secondary" onClick={register}>
                 Register
               </Button>
