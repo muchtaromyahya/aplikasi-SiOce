@@ -12,6 +12,7 @@ body{
 
 .header {
   background-color: #c0392b;
+  height: 120%;
 }
 
 .menu {
@@ -76,4 +77,23 @@ h2 {
   margin-top: 12px;
   margin-right: 12px;
   position: absolute;
+  /* margin-bottom: 50px; */
+}
+.right-content {
+  /* position: absolute; */
+  /* display: inline; */
+  font-size: 25px;
+}
+.username {
+  position: relative;
+  font-size: 25px;
+  margin-right: 12px;
+  text-align: left;
+  margin-top: -50px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  color: white;
+}
+.margin-bottom {
+  margin-bottom: 20px;
 }

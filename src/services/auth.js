@@ -4,14 +4,14 @@ import API from '../config/rest';
 const login = (email, password) => {
   return BaseService.post(API.LOGIN, { email, password });
 };
-const register = (name, email, birthdate, sex, phone, status, password) => {
+const register = (name, email, birthdate, sex, phone, statusType, password) => {
   return BaseService.post(API.REGISTER, {
     name,
     email,
     birthdate,
     sex,
     phone,
-    status,
+    statusType,
     password,
   });
 };
