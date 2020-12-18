@@ -79,11 +79,8 @@
     font-size: 17px;
 }
 
-#formComent .formInput input {
+.my-1 {
     width: 100px;
-    margin-top: 5px;
-    height: 40px;
+    padding: 8px;
     border-radius: 20px;
-    padding: 10px;
-    box-sizing: border-box;
 }
