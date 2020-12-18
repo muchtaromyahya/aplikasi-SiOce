@@ -1,11 +1,41 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import { Card, Button, Accordion, Table } from 'react-bootstrap';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { taskIcon } from '../../assets';
+import appService from '../../services/appService';
 
 const MainTask = () => {
+  const [namatugas, setNamaTugas] = useState('');
+  const [deskripsi, setDeskripsi] = useState('');
+  const [fileUpload, setfileUpload] = useState('');
+  const [expired, setExpired] = useState('');
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmitForm = () => {
+    setIsLoading(true);
+    appService
+      .CreateAssignment(
+        namatugas,
+        deskripsi,
+        fileUpload,
+        expired,
+        '5fdce47dfcc7d100171f8f81'
+      )
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(process.env);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -15,7 +45,12 @@ const MainTask = () => {
       </div>
       <div className="row">
         <div className="col-5">
-          <Form>
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+              onSubmitForm();
+            }}
+          >
             <FormGroup>
               <Label for="Nama Tugas">Nama Tugas</Label>
               <Input
@@ -23,9 +58,10 @@ const MainTask = () => {
                 name="ntugas"
                 id="ntugas"
                 placeholder="Nama Tugas"
-                // onChange={(e) => {
-                //   setUsername(e.target.value);
-                // }}
+                value={namatugas}
+                onChange={(e) => {
+                  setNamaTugas(e.target.value);
+                }}
               />
             </FormGroup>
             <FormGroup>
@@ -36,6 +72,10 @@ const MainTask = () => {
                 className="form-control"
                 id="textAreaExample"
                 rows="4"
+                value={deskripsi}
+                onChange={(e) => {
+                  setDeskripsi(e.target.value);
+                }}
               />
             </FormGroup>
             <FormGroup>
@@ -51,13 +91,28 @@ const MainTask = () => {
                     type="file"
                     class="custom-file-input"
                     id="inputGroupFile01"
-                    // onChange={(e) => {
-                    //   setUsername(e.target.value);
-                    // }}
+                    value={fileUpload}
+                    onChange={(e) => {
+                      setfileUpload(e.target.value);
+                    }}
                   />
                 </div>
               </div>
             </FormGroup>
+            <FormGroup>
+              <Label for="Timpestamp">Tenggat Waktu</Label>
+              <Input
+                type="date"
+                name="timestamp"
+                id="timestamp"
+                placeholder=""
+                value={expired}
+                onChange={(e) => {
+                  setExpired(e.target.value);
+                }}
+              />
+            </FormGroup>
+            <input type="submit" value="Submit" disabled={isLoading} />
           </Form>
         </div>
       </div>
