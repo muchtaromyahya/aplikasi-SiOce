@@ -1,43 +1,25 @@
-import {
-  Home,
-  Classes,
-  Comments,
-  Posts,
-  Tasks,
-  LoginPage,
-  RegisterModal,
-} from '../pages';
+import { Home, Classes, Comments, Posts, Tasks } from '../pages';
 
 const routes = [
   {
-    path: '/register',
-    component: RegisterModal,
-    isPublic: true,
-  },
-  {
-    path: '/login',
-    component: LoginPage,
-    isPublic: true,
-  },
-  {
     path: '/tasks',
     component: Tasks,
-    isPublic: false,
+    isPublic: true,
   },
   {
     path: '/post',
     component: Posts,
-    isPublic: false,
+    isPublic: true,
   },
   {
     path: '/comments',
     component: Comments,
-    isPublic: false,
+    isPublic: true,
   },
   {
     path: '/classes',
     component: Classes,
-    isPublic: false,
+    isPublic: true,
   },
   {
     path: '/home',
