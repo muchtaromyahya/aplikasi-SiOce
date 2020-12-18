@@ -1,4 +1,5 @@
 export default {
-  LOGIN: '/user/login',
+  LOGIN: '/login',
+  COMMENT: '/comment',
   REGISTER: '/user/register',
 };
