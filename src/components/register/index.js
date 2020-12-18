@@ -19,7 +19,7 @@ const RegisterModal = () => {
   const [birthdate, setBirthdate] = useState('');
   const [sex, setSex] = useState('');
   const [phone, setPhone] = useState('');
-  const [statusType, setStatus] = useState('');
+  const [status, setStatus] = useState('');
   const [password, setPassword] = useState('');
   const [isLoginLoading, setLoginLoading] = useState(false);
 
@@ -34,7 +34,7 @@ const RegisterModal = () => {
   const onSubmit = () => {
     setLoginLoading(true);
     authService
-      .register(name, email, birthdate, sex, phone, statusType, password)
+      .register(name, email, birthdate, sex, phone, status, password)
       // .res((res) => {
       //   const data = res;
       //   // alert(data)
