@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 import { isUserAuthenticated, deleteCookie } from '../../utils/cookie';
 import './style.css';
 
 const Header = () => {
   const listMenu = ['Home', 'Classes'];
   const logout = () => {
-    deleteCookie('tokenn');
+    deleteCookie('token');
     window.location.replace('/login');
   };
 
@@ -23,7 +23,7 @@ const Header = () => {
         })}
       </ul>
       {isUserAuthenticated() ? (
-        <Button
+        <button
           type="button"
           className="logout btn btn-danger"
           onClick={() => {
@@ -31,7 +31,7 @@ const Header = () => {
           }}
         >
           Logout
-        </Button>
+        </button>
       ) : (
         <div />
       )}
