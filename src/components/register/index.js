@@ -34,8 +34,12 @@ const RegisterModal = () => {
   const onSubmit = () => {
     setLoginLoading(true);
     authService
-      .login(name, email, birthdate, sex, phone, status, password)
-      // .then((res) => {
+      .register(name, email, birthdate, sex, phone, status, password)
+      // .res((res) => {
+      //   const data = res;
+      //   // alert(data)
+      // })
+      // // .then((res) => {
       // console.log(JSON.stringify(res.token));
       // console.log(JSON.parse(res.token));
       // const cookieToken = res.token;
@@ -51,6 +55,7 @@ const RegisterModal = () => {
         setLoginLoading(false);
         // history.push('/product');
         window.location.replace('/login');
+        document.title = 'Register  Aplikasi-SiOce';
       });
   };
 
@@ -123,11 +128,13 @@ const RegisterModal = () => {
                   <Input
                     type="select"
                     name="sex"
+                    id="sex"
                     onChange={(e) => {
                       setSex(e.target.value);
                     }}
                   >
-                    <option value="laki laki">Laki Laki</option>
+                    <option value="-">---- Sex ----</option>
+                    <option value="laki-laki">Laki Laki</option>
                     <option value="perempuan">Perempuan</option>
                   </Input>
                 </div>
@@ -165,6 +172,7 @@ const RegisterModal = () => {
                       setStatus(e.target.value);
                     }}
                   >
+                    <option value="-">---- Status ----</option>
                     <option value="siswa">Siswa</option>
                     <option value="guru">Guru</option>
                   </Input>
@@ -177,7 +185,7 @@ const RegisterModal = () => {
               </div>
               <div className="col-md-9">
                 <Input
-                  type="text"
+                  type="password"
                   name="password"
                   id="password"
                   placeholder="password"
@@ -204,7 +212,7 @@ const RegisterModal = () => {
                 }}
                 disabled={isLoginLoading}
               >
-                Login
+                Register
               </Button>
             </div>
           </Form>
