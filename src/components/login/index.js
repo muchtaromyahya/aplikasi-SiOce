@@ -16,7 +16,7 @@ import {
 import './style.css';
 import { setCookie } from '../../utils/cookie';
 import { authService } from '../../services';
-// import { RegisterModal } from '../index';
+// import { Header } from '../index';
 
 const Login = () => {
   // const { className } = props;
@@ -46,12 +46,26 @@ const Login = () => {
     authService
       .login(username, password)
       .then((res) => {
-        // console.log(JSON.stringify(res.token));
+        // console.log(JSON.stringify(res));
         // console.log(JSON.parse(res.token));
         const cookieToken = res.data.token;
-        // const cookieUser = res.user;
-        // setCookie('userID', JSON.stringify(cookieUser), 1000);
+        // const userName = res.data.user.name;11
+        // const status = res.data.user.status;
+        const userData = {
+          id: res.data.id,
+          name: res.data.nama,
+          status: res.data.statusType,
+        };
         setCookie('token', JSON.stringify(cookieToken), 1000);
+        setCookie('userData', JSON.stringify(userData), 1000);
+        // console.log(userData)
+
+        // console.log(res)
+        // setCookie('userID', JSON.stringify(cookieUser), 1000);
+        // Header(res.data.name);
+        // setCookie('token', JSON.stringify(cookieToken), 1000);
+        // setCookie('name', JSON.stringify(userName), 1000);
+        // setCookie('status', JSON.stringify(status), 1000);
       })
       .catch((err) => {
         console.log(err);

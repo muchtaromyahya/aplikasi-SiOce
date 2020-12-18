@@ -1,5 +1,7 @@
 export default {
   LOGIN: '/login',
-  COMMENT: '/comment',
   REGISTER: '/user/register',
+  COMMENT: '/comment',
+  ASSIGNMENT: '/assignments',
+  UPLOAD: 'uploads',
 };
