@@ -1,11 +1,11 @@
 .post {
   max-width: 1000px;
   margin: 50px auto;
-  /* border: 1px solid black; */
+  border: 1px solid black;
 }
 
 .inputpost {
-  /* border: 1px solid black; */
+  border: 1px solid black;
 }
 
 .jumbotron {
@@ -14,4 +14,8 @@
     #f6d365 0%,
     #fda085 100%
   ) !important;
+}
+
+.post-card {
+  border: 1px solid black;
 }

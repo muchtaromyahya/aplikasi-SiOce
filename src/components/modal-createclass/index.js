@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { createClassService } from '../../services';
 
 const ModalCreateClass = (props) => {
   const [namaKelas, setNamaKelas] = useState('');
@@ -18,8 +19,7 @@ const ModalCreateClass = (props) => {
     console.log(namaKelas);
     console.log(deskripsi);
     // setLoginLoading(true);
-    // authService
-    //   .login(username, password)
+    createClassService.createclass();
     //   .then((res) => {
     //     console.log(res);
     //     const cookieToken = res.token;

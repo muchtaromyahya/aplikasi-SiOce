@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import ModalEditClass from '../modal-editclass';
-import './style.css';
+import './style2.css';
 
 const ClassList = () => {
   return (

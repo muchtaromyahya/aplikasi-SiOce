@@ -1,15 +1,15 @@
 import React from 'react';
 import { ClassList, NavbarClass } from '../../components';
-import './style.css';
+import { classService } from '../../services';
+import './styleclasses.css';
 
 const Classes = () => {
   // const [userDataLoading, setUserDataLoading] = useState(false);
-  // const [product, setProduct] = useState([]);
+  // const [class, setClass] = useState([]);
 
   // useEffect(() => {
   //   setUserDataLoading(true);
-  //   productService
-  //     .Product(50, 0, '')
+  classService.classes();
   //     .then((res) => {
   //       setProduct(res.data);
   //       console.log(res.data);
@@ -24,7 +24,14 @@ const Classes = () => {
   return (
     <div className="classbody">
       <NavbarClass />
+      {/* <ClassList2 />
+      <ClassList2 /> */}
+
       <div className="cards">
+        {/* {class.map((class) => {
+          return(<ClassList title={class.title} desciption={class.desciption}/>)
+        })} */}
+
         <ClassList />
         <ClassList />
         <ClassList />

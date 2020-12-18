@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { Button, Container, Form, Jumbotron } from 'react-bootstrap';
+import { Button, Container, Form, Jumbotron, Nav } from 'react-bootstrap';
 import { Post } from '../../components';
+import { createPostService, postService } from '../../services';
 import './style_post.css';
 
 const Posts = () => {
   const [judulPost, setJudulPost] = useState('');
   const [deskripsi, setDeskripsi] = useState('');
+  // const [post, setPost] = useState([]);
 
   // useEffect(() => {
   //   setUserDataLoading(true);
-  //   productService
-  //     .Product(50, 0, '')
+  postService.post();
   //     .then((res) => {
-  //       setProduct(res.data);
+  //       setPost(res.data);
   //       console.log(res.data);
   //     })
   //     .catch((err) => {
@@ -28,8 +29,7 @@ const Posts = () => {
     // console.log(judulPost);
     // console.log(deskripsi);
     // setLoginLoading(true);
-    // authService
-    //   .login(username, password)
+    createPostService.createpost();
     //   .then((res) => {
     //     console.log(res);
     //     const cookieToken = res.token;
@@ -51,7 +51,23 @@ const Posts = () => {
   };
   return (
     <div className="post">
-      <Jumbotron fluid>
+      <Nav fill variant="tabs" defaultActiveKey="/post">
+        <Nav.Item>
+          <Nav.Link href="/post">
+            <h3>Post</h3>
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1">
+            <h3>Task</h3>
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+      {/* <div className="row">
+        <div className="col-md-6">panggil post</div>
+        <div className="col-md-6">panggil task</div>
+      </div> */}
+      <Jumbotron className="mt-4" fluid>
         <Container>
           <h1>Nama Kelas</h1>
           <p>
@@ -92,9 +108,14 @@ const Posts = () => {
           </Button>
         </Form>
       </div>
-      <Post />
-      <Post />
-      <Post />
+      <div>
+        {/* {post.map((posts) => {
+          return <Post title={posts.title} desciption={posts.desciption} />;
+        })} */}
+        <Post />
+      </div>
+
+      <div className="post-card">aseateryrewyewgdfgasfhdg</div>
     </div>
   );
   //   const dataPosting = list.map((data) => {
