@@ -103,7 +103,7 @@ const RegisterModal = () => {
                 </div>
                 <div className="col-md-9">
                   <Input
-                    type="text"
+                    type="date"
                     name="birthdate"
                     id="birthdate"
                     placeholder="birthdate"
@@ -121,14 +121,15 @@ const RegisterModal = () => {
                 </div>
                 <div className="col-md-9">
                   <Input
-                    type="text"
+                    type="select"
                     name="sex"
-                    id="sex"
-                    placeholder="sex"
                     onChange={(e) => {
                       setSex(e.target.value);
                     }}
-                  />
+                  >
+                    <option value="laki laki">Laki Laki</option>
+                    <option value="perempuan">Perempuan</option>
+                  </Input>
                 </div>
               </div>
             </FormGroup>
@@ -157,14 +158,16 @@ const RegisterModal = () => {
                 </div>
                 <div className="col-md-9">
                   <Input
-                    type="text"
+                    type="select"
                     name="status"
                     id="status"
-                    placeholder="status"
                     onChange={(e) => {
                       setStatus(e.target.value);
                     }}
-                  />
+                  >
+                    <option value="siswa">Siswa</option>
+                    <option value="guru">Guru</option>
+                  </Input>
                 </div>
               </div>
             </FormGroup>
