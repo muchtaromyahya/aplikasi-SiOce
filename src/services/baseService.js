@@ -16,7 +16,7 @@ const createAxiosInterceptor = (url) => {
       'Accept-Language': 'es',
       'Content-Type': 'application/json',
       Authorization:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaGFuc29uIHNpdHVtb3JhbmciLCJpZCI6IjVmZGFkZDBhYmRjMDcwM2ExNGYzMTM4OSIsImlhdCI6MTYwODMwOTc3OSwiZXhwIjoxNjA4MzI3Nzc5fQ.eOxH98FcXzYNmNb2zqPfLnm9THzCZFJUgUL-S1Wu-1Q',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJpZCI6IjVmZGNlYjRlZmNjN2QxMDAxNzFmOGY4NCIsImlhdCI6MTYwODMzODExMSwiZXhwIjoxNjA4MzU2MTExfQ.Rijfp4wU3VvjxdBg2jrNFXLPjPSNBMa0_90DnYXj_ZE',
     },
   });
   axiosCreate.interceptors.response.use(

@@ -7,6 +7,8 @@
 .cards {
   border: 1px solid black;
   margin-top: 20px;
+  margin-right: 120px;
+  margin-left: -80px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

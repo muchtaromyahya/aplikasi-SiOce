@@ -6,6 +6,7 @@ import './styleclasses.css';
 const Classes = () => {
   // const [userDataLoading, setUserDataLoading] = useState(false);
   const [classname, setClassname] = useState([]);
+  // const [classId, setClassId] = useState([]);
 
   useEffect(() => {
     //   setUserDataLoading(true);
@@ -13,6 +14,8 @@ const Classes = () => {
       .classes()
       .then((res) => {
         setClassname(res);
+        // setClassname(res);
+
         console.log(res);
       })
       .catch((err) => {
