@@ -1,70 +1,96 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import './style_comments.css';
-// import { getCookie } from '../../utils/cookie.js';
-import { commentsService } from '../../services';
+import {
+  commentsService,
+  createComments,
+  // getUserComments
+} from '../../services';
 
-// const list = [
-//   {
-//       id: '1',
-//       name: 'Yoga',
-//       time: '12-10-2020 17:20',
-//       text: 'Maaf izin bertanya untuk soal no 3 itu seperti apa ya?'
-//   },
-//   {
-//       id: '2',
-//       name: 'Prianjaya',
-//       time: '21-01-2020 20:17',
-//       text: 'Saya juga ingin bertanya mengenai pelaporan apakah pengumpulannya hanya 1 orang dari tiap kelompok?'
-//   }
-// ];
+function formatDate(string) {
+  const options = {
+    years: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  return new Date(string).toLocaleDateString([], options);
+}
 
 const Comments = () => {
   const [getComments, setGetComments] = useState([]);
   const [comment, setComment] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  // const [id, setId] = useState('');
+  // const [nameUser, setNameUser] = useState('');
+  const [
+    postingId,
+    // setPostingId
+  ] = useState('');
+  const [
+    userId,
+    // setUserId
+  ] = useState('');
 
   useEffect(() => {
-    setIsLoading(true);
-    commentsService.CommentsService.then((res) => {
-      setGetComments(res.data);
-      console.log(isLoading);
-    })
+    commentsService
+      .CommentsService()
+      .then((res) => {
+        setGetComments(res);
+      })
       .catch((err) => {
         return console.log(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
+    // .finally(() => {
+    //   setIsLoading(false);
+    // });
   }, []);
+
+  // function getNameUser(cekId) {
+  //   getUserComments
+  //     .GetUserComments(cekId)
+  //     .then((res) => {
+  //       setNameUser(res.name);
+  //     });
+  // }
 
   const onSubmit = (e) => {
     e.preventDevault();
+    createComments
+      .CreateComments(postingId, userId, getComments)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        return console.log(err);
+      });
+    // .finally(() => {
+    //   setIsLoading(false);
+    // });
   };
 
   const listComment = getComments.map((data) => {
-    return <h1>{data.description}</h1>;
+    console.log(data);
+    const date = formatDate(data.createdAt);
+    console.log(date);
+    // setId(data.userId);
+    // getNameUser(id);
+    return (
+      <div key={data.id} className="comentBox">
+        <div className="boxMain">
+          <div className="boxProfile">
+            <h1>{`${data.userId} (nama)`}</h1>
+            {/* <p>{new (data.createdAt).toDateString()}</p> */}
+            <p>{date}</p>
+          </div>
+          <div className="boxText">
+            <p>{data.comments}</p>
+          </div>
+        </div>
+      </div>
+    );
   });
-
-  //   const dataComent = list.map((data) => {
-  //     return (
-  //       <div key={data.id} className="comentBox">
-  //         <div className="boxMain">
-  //           <div className="boxProfile">
-  //             <h1>{data.name}</h1>
-  //             <p>{data.time}</p>
-  //           </div>
-  //           <div className="boxText">
-  //             <p>{data.text}</p>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     );
-  // });
 
   return (
     <div id="comentContainer">
-      {/* { dataComent } */}
       {listComment}
 
       <div id="formComent">
