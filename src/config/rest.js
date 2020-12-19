@@ -5,4 +5,7 @@ export default {
   COMMENT: '/comment',
   ASSIGNMENT: '/assignments',
   UPLOAD: 'uploads',
+    GETUSER: (id) => {
+    return `/edit/${id}`;
+  },
 };

@@ -6,6 +6,7 @@ import {
   Tasks,
   LoginPage,
   RegisterModal,
+  AccountPage,
 } from '../pages';
 
 const routes = [
@@ -18,6 +19,11 @@ const routes = [
     path: '/login',
     component: LoginPage,
     isPublic: true,
+  },
+  {
+    path: '/account',
+    component: AccountPage,
+    isPublic: false,
   },
   {
     path: '/tasks',

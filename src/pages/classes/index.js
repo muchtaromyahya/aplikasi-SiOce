@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ClassList, NavbarClass, Tugas } from '../../components';
 import { classService } from '../../services';
-
 import './styleclasses.css';
 
 const Classes = () => {
