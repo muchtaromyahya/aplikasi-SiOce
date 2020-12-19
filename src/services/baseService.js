@@ -3,7 +3,7 @@ import { getCookie } from '../utils/cookie';
 
 function getTokenAuth() {
   if (getCookie('token') && getCookie('userData')) {
-    return JSON.parse(getCookie('token')).value;
+    return JSON.parse(getCookie('token'));
   }
   return '';
 }
@@ -15,8 +15,7 @@ const createAxiosInterceptor = (url) => {
       Accept: 'application/json',
       'Accept-Language': 'es',
       'Content-Type': 'application/json',
-
-      Authorization: `Bearer ${getTokenAuth()}`,
+      Authorization: `${getTokenAuth()}`,
     },
   });
   axiosCreate.interceptors.response.use(

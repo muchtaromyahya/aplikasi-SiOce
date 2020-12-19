@@ -5,7 +5,6 @@ import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import { Header } from './components';
 import routes from './config/routes';
 import { isUserAuthenticated } from './utils/cookie';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   // console.log(isUserAuthenticated());

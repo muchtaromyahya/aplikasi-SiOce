@@ -4,33 +4,33 @@ import { Link } from 'react-router-dom';
 import {
   isUserAuthenticated,
   deleteCookie,
-  getCookie,
+  // getCookie,
 } from '../../utils/cookie';
 import './style.css';
 
-function getUserName() {
-  if (getCookie('userData')) {
-    // console.log(JSON.parse(getCookie('data')).name);
-    const data = JSON.parse(getCookie('userData')).name;
-    return data;
-  }
-  return '';
-}
-function getStatus() {
-  if (getCookie('userData')) {
-    // console.log(JSON.parse(getCookie('data')).status);
-    const data = JSON.parse(getCookie('userData')).status;
-    return data;
-  }
-  return '';
-}
+// function getUserName() {
+//   if (getCookie('userData')) {
+//     // console.log(JSON.parse(getCookie('data')).name);
+//     const data = JSON.parse(getCookie('userData')).name;
+//     return data;
+//   }
+//   return '';
+// }
+// function getStatus() {
+//   if (getCookie('userData')) {
+//     // console.log(JSON.parse(getCookie('data')).status);
+//     const data = JSON.parse(getCookie('userData')).status;
+//     return data;
+//   }
+//   return '';
+// }
 
 const Header = () => {
-  const listMenu = ['Home', 'Classes'];
-  const username = `${getUserName()}`;
-  const status = `${getStatus()}`;
-  const awal = ' - (';
-  const akhir = ')';
+  const listMenu = ['Home', 'Classes', 'Account'];
+  // const username = `${getUserName()}`;
+  // const status = `${getStatus()}`;
+  // const awal = ' - (';
+  // const akhir = ')';
   // console.log(username);
   const logout = () => {
     deleteCookie('token');
@@ -51,15 +51,14 @@ const Header = () => {
       </ul>
       {isUserAuthenticated() ? (
         <>
-          <span className="margin-bottom">
+          {/* <span className="margin-bottom">
             <h1 className="username">
               {username}
               {awal}
               {status}
               {akhir}
             </h1>
-            {/* <h1 className="username">{ status }</h1> */}
-          </span>
+          </span> */}
           <button
             type="button"
             className="logout btn btn-danger"

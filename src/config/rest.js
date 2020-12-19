@@ -9,4 +9,7 @@ export default {
   UPDATECLASSBYID: (id) => {
     return `/class/${id}`;
   },
+  GETUSER: (id) => {
+    return `/edit/${id}`;
+  },
 };
