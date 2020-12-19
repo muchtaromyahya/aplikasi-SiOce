@@ -6,7 +6,7 @@ import { createClassService } from '../../services';
 const ModalCreateClass = (props) => {
   const [classname, setClassname] = useState('');
   const [description, setDescription] = useState('');
-  // const [maxstudent, setMaxstudent] = useState(30);
+  const [maxstudent, setMaxstudent] = useState();
   // const [isLoading, setLoading] = useState(false);
   const { buttonLabel, className } = props;
 
@@ -22,7 +22,7 @@ const ModalCreateClass = (props) => {
     console.log(description);
     // setLoginLoading(true);
     createClassService
-      .createclass(classname, description, 30)
+      .createclass(classname, description, maxstudent)
       .then((res) => {
         console.log(res);
         //     const cookieToken = res.token;
@@ -70,6 +70,18 @@ const ModalCreateClass = (props) => {
                   placeholder="Masukan description kelas"
                   onChange={(e) => {
                     setDescription(e.target.value);
+                  }}
+                />
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Jumlah maksimal siswa</Form.Label>
+                <Form.Control
+                  value={maxstudent}
+                  as="textarea"
+                  rows={3}
+                  placeholder="Masukan jumlah maksimal siswa"
+                  onChange={(e) => {
+                    setMaxstudent(e.target.value);
                   }}
                 />
               </Form.Group>

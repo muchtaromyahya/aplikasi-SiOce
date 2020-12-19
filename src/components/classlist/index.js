@@ -3,10 +3,9 @@ import { Button, Card } from 'react-bootstrap';
 import ModalEditClass from '../modal-editclass';
 import './style2.css';
 
-const ClassList = ({ title, desciption, key }) => {
+const ClassList = ({ title, desciption }) => {
   return (
     <div>
-      {key}
       <Card className="cardclass" style={{ width: '20rem' }}>
         <Card.Img
           variant="top"

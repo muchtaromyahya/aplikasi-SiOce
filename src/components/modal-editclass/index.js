@@ -20,7 +20,7 @@ const ModalEditClass = (props) => {
     // console.log(deskripsi);
     // setLoginLoading(true);
     updateClassService
-      .updateClass(classname, description)
+      .updateClass(description, 30)
       .then((res) => {
         console.log(res);
         // const cookieToken = res.token;

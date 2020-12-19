@@ -9,7 +9,7 @@ const Classes = () => {
   // const [classId, setClassId] = useState([]);
 
   useEffect(() => {
-    //   setUserDataLoading(true);
+    // setUserDataLoading(true);
     classService
       .classes()
       .then((res) => {
@@ -28,8 +28,6 @@ const Classes = () => {
   return (
     <div className="classbody">
       <NavbarClass />
-      {/* <ClassList2 />
-      <ClassList2 /> */}
 
       <div className="cards">
         {classname.map((classnames) => {
