@@ -20,7 +20,6 @@ const createAxiosInterceptor = (url) => {
   });
   axiosCreate.interceptors.response.use(
     (response) => {
-      // console.log(response)
       return response.data;
     },
     (error) => {

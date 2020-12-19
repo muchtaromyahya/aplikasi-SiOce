@@ -8,3 +8,5 @@ export { default as updateClassService } from './updateClass';
 export { default as appService } from './appService';
 export { default as userService } from './user';
 export { default as commentsService } from './commentsService';
+export { default as createComments } from './createComments';
+export { default as getUserComments } from './getUserComments';

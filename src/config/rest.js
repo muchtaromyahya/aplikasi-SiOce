@@ -1,11 +1,15 @@
 export default {
   LOGIN: '/login',
   REGISTER: '/user/register',
+  POST: '/post',
   CLASS: '/class',
   COMMENT: '/comment',
   ASSIGNMENT: '/assignments',
   UPLOAD: 'uploads',
-    GETUSER: (id) => {
+  UPDATECLASSBYID: (id) => {
+    return `/class/${id}`;
+  },
+  GETUSER: (id) => {
     return `/edit/${id}`;
   },
 };
