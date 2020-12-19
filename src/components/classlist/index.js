@@ -6,7 +6,7 @@ import './style2.css';
 const ClassList = ({ title, desciption }) => {
   return (
     <div>
-      <Card style={{ width: '20rem' }}>
+      <Card className="cardclass" style={{ width: '20rem' }}>
         <Card.Img
           variant="top"
           src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=666&q=80"

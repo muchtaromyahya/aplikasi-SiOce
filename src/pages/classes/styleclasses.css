@@ -1,12 +1,14 @@
 .classbody {
   max-width: 1200px;
   margin: 50px auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .cards {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin-top: 20px;
+  margin-right: 120px;
+  margin-left: -80px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

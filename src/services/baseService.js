@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { getCookie } from '../utils/cookie';
+import { getCookie } from '../utils/cookie';
 
 function getTokenAuth() {
   if (getCookie('token') && getCookie('userData')) {
@@ -20,7 +20,6 @@ const createAxiosInterceptor = (url) => {
   });
   axiosCreate.interceptors.response.use(
     (response) => {
-      // console.log(response)
       return response.data;
     },
     (error) => {
