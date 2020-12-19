@@ -26,7 +26,7 @@ const Account = () => {
   const [isLoginLoading, setLoginLoading] = useState(false);
 
   const cancle = () => {
-    return window.location.replace('/login');
+    return window.location.replace('/classes');
   };
   function getId() {
     if (getCookie('userData')) {
@@ -49,6 +49,7 @@ const Account = () => {
       setSex(res.sex);
       setPhone(res.phone);
       setStatus(res.statusType);
+      // console.log(res);
       // console.log(userData);
     });
     // .catch((err) => {
@@ -61,7 +62,7 @@ const Account = () => {
   const onSubmit = () => {
     setLoginLoading(true);
     userService
-      .updateUser(name, email, birthdate, sex, phone)
+      .updateUser(id, name, email, birthdate, sex, phone, statusType)
       // .res((res) => {
       //   const data = res;
       //   // alert(data)
@@ -90,7 +91,7 @@ const Account = () => {
     <div>
       <Card className="card">
         <CardBody>
-          <CardTitle>Login</CardTitle>
+          <CardTitle>Edit Data</CardTitle>
           <Form>
             <FormGroup>
               <div className="row">
@@ -230,7 +231,7 @@ const Account = () => {
                 }}
                 disabled={isLoginLoading}
               >
-                Register
+                Edit
               </Button>
             </div>
           </Form>
