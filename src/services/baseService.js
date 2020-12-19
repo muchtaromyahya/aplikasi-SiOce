@@ -1,12 +1,12 @@
 import axios from 'axios';
-// import { getCookie } from '../utils/cookie';
+import { getCookie } from '../utils/cookie';
 
-// function getTokenAuth() {
-//   if (getCookie('token') && getCookie('userData')) {
-//     return JSON.parse(getCookie('token')).value;
-//   }
-//   return '';
-// }
+function getTokenAuth() {
+  if (getCookie('token') && getCookie('userData')) {
+    return JSON.parse(getCookie('token')).value;
+  }
+  return '';
+}
 
 const createAxiosInterceptor = (url) => {
   const axiosCreate = axios.create({
@@ -15,8 +15,8 @@ const createAxiosInterceptor = (url) => {
       Accept: 'application/json',
       'Accept-Language': 'es',
       'Content-Type': 'application/json',
-      Authorization:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJpZCI6IjVmZGNlYjRlZmNjN2QxMDAxNzFmOGY4NCIsImlhdCI6MTYwODMzODExMSwiZXhwIjoxNjA4MzU2MTExfQ.Rijfp4wU3VvjxdBg2jrNFXLPjPSNBMa0_90DnYXj_ZE',
+
+      Authorization: `Bearer ${getTokenAuth()}`,
     },
   });
   axiosCreate.interceptors.response.use(

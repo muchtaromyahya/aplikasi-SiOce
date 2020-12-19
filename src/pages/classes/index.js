@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ClassList, NavbarClass } from '../../components';
 import { classService } from '../../services';
+
 import './styleclasses.css';
 
 const Classes = () => {
@@ -16,7 +17,7 @@ const Classes = () => {
         setClassname(res);
         // setClassname(res);
 
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         return console.log(err);
