@@ -13,7 +13,7 @@ import {
   // Label,
   Input,
 } from 'reactstrap';
-import './style.css';
+import './style2.css';
 import { setCookie } from '../../utils/cookie';
 import { authService } from '../../services';
 // import { Header } from '../index';
@@ -67,9 +67,9 @@ const Login = () => {
         // setCookie('name', JSON.stringify(userName), 1000);
         // setCookie('status', JSON.stringify(status), 1000);
       })
-      // .catch((err) => {
-      //   console.log(err);
-      // })
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setLoginLoading(false);
         // toggle();
