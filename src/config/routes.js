@@ -33,17 +33,17 @@ const routes = [
   {
     path: '/post',
     component: Posts,
-    isPublic: true,
+    isPublic: false,
   },
   {
     path: '/comments',
     component: Comments,
-    isPublic: true,
+    isPublic: false,
   },
   {
     path: '/classes',
     component: Classes,
-    isPublic: true,
+    isPublic: false,
   },
   {
     path: '/home',

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-// import './App.css';
+import './App.css';
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import { Header } from './components';
 import routes from './config/routes';
