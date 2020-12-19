@@ -1,8 +1,11 @@
 export default {
-  LOGIN: '/user/login',
+  LOGIN: '/login',
   REGISTER: '/user/register',
-  GETUSER: (id) => {
+  CLASS: '/class',
+  COMMENT: '/comment',
+  ASSIGNMENT: '/assignments',
+  UPLOAD: 'uploads',
+    GETUSER: (id) => {
     return `/edit/${id}`;
   },
-  // UPDATEUSER : /
 };
