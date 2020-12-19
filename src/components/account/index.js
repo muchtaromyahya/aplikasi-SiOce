@@ -9,32 +9,59 @@ import {
   CardBody,
   CardTitle,
 } from 'reactstrap';
-import './style.css';
-// import { setCookie } from '../../utils/cookie';
-import { authService } from '../../services';
+import './styleAccount.css';
+import { getCookie } from '../../utils/cookie';
+import { userService } from '../../services';
+// import { useParams } from 'react-router-dom';
 
-const RegisterModal = () => {
+const Account = () => {
+  // const [userData, setUserData] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [birthdate, setBirthdate] = useState('');
   const [sex, setSex] = useState('');
   const [phone, setPhone] = useState('');
   const [statusType, setStatus] = useState('');
-  const [password, setPassword] = useState('');
+  //   const [password, setPassword] = useState('');
   const [isLoginLoading, setLoginLoading] = useState(false);
-
-  useEffect(() => {
-    document.title = 'Register  Aplikasi-SiOce';
-  });
 
   const cancle = () => {
     return window.location.replace('/login');
   };
+  function getId() {
+    if (getCookie('userData')) {
+      // console.log(JSON.parse(getCookie('data')).id);
+      const data = JSON.parse(getCookie('userData')).id;
+      return data;
+    }
+    return '';
+  }
+  const id = `${getId()}`;
 
+  useEffect(() => {
+    document.title = 'Account  Aplikasi-SiOce';
+    userService.getUser(id).then((res) => {
+      // console.log('then', res.userId);
+      // setUserData(res);
+      setName(res.nama);
+      setEmail(res.email);
+      setBirthdate(res.birthdate);
+      setSex(res.sex);
+      setPhone(res.phone);
+      setStatus(res.statusType);
+      // console.log(userData);
+    });
+    // .catch((err) => {
+    //     console.log(err);
+    //   })
+    //   .finally(() => {
+    //       console.log('data');
+    //     });
+  }, [id]);
   const onSubmit = () => {
     setLoginLoading(true);
-    authService
-      .register(name, email, birthdate, sex, phone, statusType, password)
+    userService
+      .updateUser(name, email, birthdate, sex, phone)
       // .res((res) => {
       //   const data = res;
       //   // alert(data)
@@ -46,7 +73,7 @@ const RegisterModal = () => {
       // console.log(res)
       // const cookieUser = res.user;
       // setCookie('userID', JSON.stringify(cookieUser), 1000);
-      // setCookie('tokenn', JSON.str ingify(cookieToken), 1);
+      // setCookie('tokenn', JSON.stringify(cookieToken), 1);
       // })
       //   .catch((err) => {
       //     console.log(err);
@@ -54,8 +81,8 @@ const RegisterModal = () => {
       .finally(() => {
         setLoginLoading(false);
         // history.push('/product');
-        window.location.replace('/login');
-        document.title = 'Register  Aplikasi-SiOce';
+        window.location.replace('/classes');
+        // document.title = 'Register  Aplikasi-SiOce';
       });
   };
 
@@ -75,11 +102,13 @@ const RegisterModal = () => {
                     type="text"
                     name="name"
                     id="name"
+                    value={name}
                     placeholder="name"
                     onChange={(e) => {
                       setName(e.target.value);
                     }}
                   />
+                  {/* <input></input> */}
                 </div>
               </div>
             </FormGroup>
@@ -93,6 +122,7 @@ const RegisterModal = () => {
                     type="email"
                     name="email"
                     id="email"
+                    value={email}
                     placeholder="email"
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -101,7 +131,7 @@ const RegisterModal = () => {
                 </div>
               </div>
             </FormGroup>
-            <FormGroup>
+            {/* <FormGroup>
               <div className="row">
                 <div className="col-md-3">
                   <h1 className="title">Birthdate</h1>
@@ -111,6 +141,7 @@ const RegisterModal = () => {
                     type="date"
                     name="birthdate"
                     id="birthdate"
+                    value={birthdate}
                     placeholder="birthdate"
                     onChange={(e) => {
                       setBirthdate(e.target.value);
@@ -118,7 +149,7 @@ const RegisterModal = () => {
                   />
                 </div>
               </div>
-            </FormGroup>
+            </FormGroup> */}
             <FormGroup>
               <div className="row">
                 <div className="col-md-3">
@@ -129,13 +160,14 @@ const RegisterModal = () => {
                     type="select"
                     name="sex"
                     id="sex"
+                    value={sex}
                     onChange={(e) => {
                       setSex(e.target.value);
                     }}
                   >
                     <option value="-">---- Sex ----</option>
-                    <option value="laki-laki">Laki Laki</option>
                     <option value="perempuan">Perempuan</option>
+                    <option value="laki-laki">Laki Laki</option>
                   </Input>
                 </div>
               </div>
@@ -150,6 +182,7 @@ const RegisterModal = () => {
                     type="text"
                     name="phone"
                     id="phone"
+                    value={phone}
                     placeholder="Phone Number"
                     onChange={(e) => {
                       setPhone(e.target.value);
@@ -168,6 +201,7 @@ const RegisterModal = () => {
                     type="select"
                     name="status"
                     id="status"
+                    value={statusType}
                     onChange={(e) => {
                       setStatus(e.target.value);
                     }}
@@ -179,22 +213,6 @@ const RegisterModal = () => {
                 </div>
               </div>
             </FormGroup>
-            <div className="row">
-              <div className="col-md-3">
-                <h1 className="title">Password</h1>
-              </div>
-              <div className="col-md-9">
-                <Input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="password"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
             <div className="button">
               <Button
                 className="button-cancel"
@@ -222,4 +240,4 @@ const RegisterModal = () => {
   );
 };
 
-export default RegisterModal;
+export default Account;
