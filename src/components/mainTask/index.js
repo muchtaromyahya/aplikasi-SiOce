@@ -89,7 +89,7 @@ const MainTask = () => {
                   </label>
                   <Input
                     type="file"
-                    class="custom-file-input"
+                    className="custom-file-input"
                     id="inputGroupFile01"
                     value={fileUpload}
                     onChange={(e) => {

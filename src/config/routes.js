@@ -33,7 +33,7 @@ const routes = [
   {
     path: '/post',
     component: Posts,
-    isPublic: true,
+    isPublic: false,
   },
   {
     path: '/comments',
