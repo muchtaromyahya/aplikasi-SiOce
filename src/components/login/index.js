@@ -52,8 +52,8 @@ const Login = () => {
         // const userName = res.data.user.name;11
         // const status = res.data.user.status;
         const userData = {
-          id: res.data.id,
-          name: res.data.nama,
+          id: res.id,
+          name: res.name,
           status: res.data.statusType,
         };
         setCookie('token', JSON.stringify(cookieToken), 1000);

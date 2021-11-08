@@ -35,22 +35,6 @@ const RegisterModal = () => {
     setLoginLoading(true);
     authService
       .register(name, email, birthdate, sex, phone, statusType, password)
-      // .res((res) => {
-      //   const data = res;
-      //   // alert(data)
-      // })
-      // // .then((res) => {
-      // console.log(JSON.stringify(res.token));
-      // console.log(JSON.parse(res.token));
-      // const cookieToken = res.token;
-      // console.log(res)
-      // const cookieUser = res.user;
-      // setCookie('userID', JSON.stringify(cookieUser), 1000);
-      // setCookie('tokenn', JSON.str ingify(cookieToken), 1);
-      // })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   })
       .finally(() => {
         setLoginLoading(false);
         // history.push('/product');
